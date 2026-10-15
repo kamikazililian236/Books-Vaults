@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book $ Notes Vault</title>
+
+    <meta name="desription" contnet="Apersonal reading space and book notes vault.">
+    <meta name="author" content="Lilian">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/components.css">
+</head>
+
+<body>
+
+    <div class="drawer-backdrop" id="drawer-backdrop"></div>
+    <aside class="nav-drawer" id="nav-drawer" aria-label="Navigation">
+        <div class="drawer-top">
+            <span class="brand-title">Book $Notes Vault</span>
+            <button type="button" class="drawer-close" id="drawer-close-btn" aria-label="close menu">
+                <svg viewBox="0 0 24 24" width="20" stroke="currentColor" stroke-width="2.5" fill="none">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <div class="drawer-section-title">NAVIGATION</div>
+
+        <nav class="drawer-nav">
+            <button type="button" class="drawer-item active" data-view="home">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 919-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+
+                Home
+            </button>
+
+            <button type="button" class="drawer-item" data-view="dashboard">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="9">
+                        << /rect>
+                            <rect x="14" y="3" width="7" height="5"></rect>
+                            <rect x="14" y="12" width="7" height="9"></rect>
+                            <rect x="3" y="16" width="7" height="5"></rect>
+                </svg>
+
+                Dashboard
+            </button>
+
+            <button type="button" class="drawer-item" data-view="catalog">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-wiidth="2">
+                    <path d="M4 19.542.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+
+                My Library
+
+            </button>
+
+            <button type="button" class="drawer-item" data-view="add-book">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+
+                Add a book
+
+            </button>
+
+            <div class="drawer-section-title" style="margin-top: 18px;">SETTINGS & MORE</div>
+
+            <button type="button" class="drawer-item" data-view="settings">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path
+                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                    </path>
+                </svg>
+
+                Settings
+            </button>
+
+            <button type="button" class="drawer-item" data-view="about">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+
+                About
+            </button>
+        </nav>
+
+        <div class="drawer-footer">
+            <p> Books & Notes Vault</p>
+        </div>
+    </aside>
+
+    <div class="app-layout">
+        <main class="main-content">
+
+            <!-- Top Header Navigation Bar-->
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button type="button" class="btn-back" id="btn-back" aria-label="Go back" style="display: none;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.2" stroke-liinecap="round" stroke-linejoin="round">
+                            <line x1="19" y1="12" x2="5" y2="12"></line>
+                            <polyline points="12 19 5 12 12 5"></polyline>
+                        </svg>
+                    </button>
+                    <button type="button" class="hamburger-btn" id="hambruger-btn" aria-label="Toggle navigation menu"
+                        title="Open navigation menu">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </button>
+                    <div class="brand topbar-brand" id="brand-home-link" title="Return to Home"
+                        style="cursor: pointer;">
+                        <span class="brand-title topbar-brand-title">Book & Notes Vault</span>
+                        <div class="sep">/</span> <button type="button" class="breadcrumb-home-btn"
+                                id="breadcrumb-home-btn">Home</button>
+                            <span id="breadcrumb-sub"></span>
+                        </div>
+                    </div>
+                    <div class="topbar-right">
+                        <button type="button" class="btn btn-primary btn-sm btn-go-add">+ Add book</button>
+                    </div>
+            </header>
+
+            <!-- VIEW 0: HOME PAGE -->
+            <section class="view-section active" id="view-home">
+                <div class="home-centered-wrap">
+
+                    <div class="home-intro-centered">
+                        <h1 class="home-headline">A Quiet Space for Every Book</h1>
+                        <p class="home-subheadline">Read. Reflect. Collect.</p>
+                        <div class="home-actions-centered">
+                            <button type="button" class="btn btn-primary" id="home-cta-library">Browse Library
+                                &rarr;</button>
+                            <button type="button" class="btn btn-secondary" id="home-cta-dashboard">Dashboard</button>
+                        </div>
+                    </div>
+
+                    <!-- Centered Large Spotlight Card-->
+                    <div class="spotlight-centered-card">
+                        <div class="spotlight-cover-large">
+                            <img src="./assets/empty-book.svg" alt="Book Cover" class="spotlight-cover-img"
+                                id="home-spotlight-img">
+                        </div>
+
+                        <div class="spotlight-details-large">
+                            <span class="spotlight-simple-tag" id="home-spotlight-tag">Currently Reading</span>
+                            <h2 class="spotlight-title-large" id="home-spotlight-title">The Midnight Library</h2>
+                            <p class="spotlight-author-large" id="home-spotlight-author">by Matt Haig . Fiction</p>
+                            <p class="spotlight-qoute-larger" id="home-spotlight-synopsis">
+                                &ldquo; Between life and death there is a library where shelves go on forever. Every
+                                book provides a chance to try another life.&rdquo;
+                            </p>
+                            <div class="spotlight-footer-large">
+                                <button type="button" class="btn-link-action" id="home-spotlight-view-btn">View in
+                                    Library &rarr;</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- VIEW 1: DASHBOARD -->
+            <section class="view-section" id="view-dashboard">
+                <div class="view-header">
+                    <h1 class="header-title">Dashboard</h1>
+                </div>
+
+                <div class="stats-row stats-row-4">
+                    <div class="card stat-card">
+                        <span class="stat-label">Current Read</span>
+                        <strong class="stat-value" id="stat-current-read">The Midnight Library</strong>
+                    </div>
+                    <div class="card stat-card">
+                        <span class="stat-label">Books Read</span>
+                        <strong class="stat-value" id="stat-books-read">0</strong>
+                    </div>
+                    <div class="card stat-card">
+                        <span class="stat-lable">Added this week</span>
+                        <strong class="stat-value" id="stat-added-week">1</strong>
+                    </div>
+                </div>
+
+                <!-- Twice-Long Favorite Book Showcase Card -->
+                <div class="card favorite-book-card" id="favorite-book-card">
+                    <div class="fvaorite-card-content">
+                        <div class="favorite-cover-preview">
+                            <img src="./assests/empty-book.svg" alt="Favorite Book Cover" class="favorite-cover-img"
+                                id="favorite-cover-img">
+                        </div>
+                        <div class="favorite-card-details">
+                            <div class="favorite-card-badge-row">
+                                <span class="favorite-card-badge" id="favorite-card-header-badge">FAVORITE BOOK</span>
+                                <span class="favorite-card-subbadge" id="favorite-card-subbadge">Curated from Personal
+                                    Vault</span>
+                            </div>
+                            <h2 class="favorite-book-title" id="favorite-book-title">Computer Systems</h2>
+                            <div class="favorite-book-meta" id="favorite-book-author">by Randal Bryant &amp; David
+                                O'Hallaron . 1,104 pages . Systems</div>
+                            <p class="favorite-book-synopsis" id="favorite-book-synopsis">
+                                A programmer's perspective on computer architeture, memory hierarchy, machine-level
+                                code, and concurrent systems.
+                            </p>
+                            <div class="favorite-card-actions">
+                                <button type="button" class="btn-toogle-status-pill" id="favorite-book-badge"
+                                    title="Click to cycle status">To Read</button>
+                                <button type="button" class="btn btn-secondary btn-sm" id="fav-view-library-btn">View in
+                                    Library &rarr;</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VIEW 2: CATALOG (MY LIBRARY) -->
+
+            <section class="view-section" id="view-catalog">
+                <div class="view-header">
+                    <h1 class="header-title">My Library</h1>
+                    <div class="view-header-actions">
+                        <button type="button" class="btn btn-secondary btn-sm" id="btn-export-json">Export JSON</button>
+                        <buttoon type="button" class="btn btn-secondary btn-sm" id="btn-import-trigger">Import
+                            JSON</button>
+                            <input type="file" id="import-file-input" accept=".json" style="display:none;">
+                    </div>
+                </div>
+
+                <div class="search-row">
+                    <div class="search-input-wrap">
+                        <input type="text" id="catalog-search-input" class="search-input" placeholder="Search books...">
+                        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.61" y2="16.61"></line>
+                        </svg>
+                    </div>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="catalog-regex-check">Regex filter
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="catalog-case-check"> Case sensitive
+                    </label>
+                </div>
+
+                <div class="toolbar-strip">
+                    <div class="select-field">
+                        <label for="catalog-sort">Sort</label>
+                        <select id="catalog-sort" class="form-select">
+                            <option value="title-asc">Title (A-Z)</option>
+                            <option value="title-desc">Title (A-Z)</option>
+                            <option value="pages-desc">Pages (High to Low)</option>
+                            <option value="date-desc">Recently Added</option>
+                        </select>
+                    </div>
+
+
+                    <div class="select-field">
+                        <label for="catalog-filter-tag">Tag</label>
+                        <select id="catalog-filter-tag" class="form-select">
+                            <option value="All">All Tags</option>
+                        </select>
+                    </div>
+
+                    <div class="select-field">
+                        <label for="catalog-filter-status">Status</label>
+                        <select id="catalog-filter-status" class="form-select">
+                            <option value="All">All Statuses</option>
+                            <option value="Reading">Reading</option>
+                            <option value="Read">Read</option>
+                            <option value="To Read">To Read</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Desktop Books Table Card -->
+
+                <div class="card table-card desktop-only-table">
+                    <div class="table-card-header" id="table-count-lable">1 book in collection</div>
+                    <div class="table-responsive">
+                        <table class="catalog-table">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Authro</th>
+                                    <th>Pages</th>
+                                    <th>Tag</th>
+                                    <th>Date Added</th>
+                                    <th class="th-status">Status</th>
+                                    <th class="th-actions">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="catalog-table-body">
+                            <tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Mobile Books Card List-->
+
+                <div class="mobile-books-container" id="mobile-books-container">
+                </div>
+            </section>
+
+            <!-- VIEW 3: ADD BOOK -->
+            <section class="view-section" id="view-add-book">
+                <div class="view-header">
+                    <h1 class="header-title" id="form-view-title">Add Book</h1>
+                </div>
+
+                <div class="card form-card">
+                    <form id="book-form">
+                        <input type="hidden" id="editind-book-id" value="">
+
+                        <div class="form-grid">
+                            <div class="form-field">
+                                <label for="form-title" class="form-label">Book title</label>
+                                <input type="text" id="form-title" class="form-input" required
+                                    placeholder="e.g. The Midnight Library">
+                            </div>
+
+
+                            <div class="form-field">
+                                <label for="form-author" class="form-label">Author</label>
+                                <input type="text" id="form-author" class="form-input" required
+                                    placeholder="e.g. Matt Haig">
+                            </div>
+
+                            <div class="form-field">
+                                <label for="form-pages" class="form-label">Number of pages</label>
+                                <input type="number" id="form-pages" class="form-input" required min="1"
+                                    placeholder="288">
+                            </div>
+
+                            <div class="form-field">
+                                <label for="form-tag" class="form-label">Tag / Genre</label>
+                                <input type="text" id="form-tag" class="form-input"
+                                    placeholders="e.g. Fiction, History, Philosophy...">
+                            </div>
+
+                            <div class="form-field">
+                                <label for="form-date" class="form-label">Date Added</label>
+                                <input type="date" id="form-date" class="form-input" required>
+                            </div>
+
+                            <div class="form-field">
+                                <Label for="form-status" class="form-label">Reading Status</Label>
+                                <select id="form-status" class="form-select">
+                                    <option value="To read" selected>To Read</option>
+                                    <option value="Reading">Reading</option>
+                                    <option value="Read">Read</option>
+                                </select>
+                            </div>
+
+                            <div class="form-field form-field-full">
+                                <label for="form-synopsis" class="form-label">Synposis</label>
+                                <textarea id="form-synopsis" class="form-input" rows="3"
+                                    style="resize: vertical; font-family: inherit;"
+                                    placeholder="A brief summary o rplot synopsis of the book..."></textarea>
+                            </div>
+
+                            <div class="form-field form-field-full">
+                                <label class="form-label" for="form-cover-file">Book Cover Image</label>
+                                <div class="cover-upload-box">
+                                    <input type="file" id="form-cover-file" class="form-file-input" accept="image/*">
+                                    <div class="cover-upload-info">Upload a cover image file from your device</div>
+                                    <div class="cover-preview-row" id="cover-preview-row" style="display: none;">
+                                        <img id="cover-preview-img" src="" alt="Cover Preview" class="cover-thumb">
+                                        <button type="button" class="btn btn-secondary btn-sm"
+                                            id="btn-remove-cover">Remove Image</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-field form-field-full">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="form-is-favorite"> Mark as Favorite Book
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-actions" style="margin-top: 24px; display: flex; gap: 12px;">
+                            <button type="submit" class="btn btn-primmary" id="btn-save-book">Save Book</button>
+                            <button type="button" class="btn btn-secondary" id="btn-cancel-form">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- VIEW 4: SETTINGS / READING TARGET -->
+            <section class="view-section" id="view-settings">
+                <div class="view-header">
+                    <h1 class="header-title">Settings</h1>
+                    <p class="header-subtitle">Personal reading goal and reader profile</p>
+                </div>
+
+                <div class="settings-grid" style="grid-template-columns: 1fr; max-width: 580px;">
+                    <div class="card settings-card">
+                        <h3 class="settings-card-title">Reading Target</h3>
+                        <form id="settings-form">
+                            <div class="form-field" style="margin-bottom: 16px;">
+                                <label for="pref-reader-goal" class="form-label">Annual Reading Goal (Number of
+                                    Books)</label>
+                                <input type="number" id="pref-reader-goal" class="form-input" min="1" max="500"
+                                    value="25">
+                            </div>
+
+                            <div class="form-field" style="margin-bottom: 20px;">
+                                <label for="pref-reader-motto" class="form-label">Personal Reading Note</label>
+                                <input type="text" id="pref-reader-motto" class="form-input"
+                                    value="A quiet space for every book.">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">save Target</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VIEW 5: ABOUT -->
+            <section class="view-section" id="view-about">
+                <div class="view-header">
+                    <h1 class="header-title">About</h1>
+                </div>
+
+                <div class="card about-card" style="max-width: 740px; padding: 36px;">
+                    <h2 style="font-family: var(--font-serif); font-size: 1.8rem; margin-bottom: 14px; color: #111827;">
+                        Book & Notes Vault</h2>
+                    <p style="color: #4B5563; line-height: 1.7; margin-bottom: 18px;">
+                        Book & Notes Vault is a mindful personal reading space designed to record books read, organize
+                        custom tags, and capture memorable quotes and reflections
+
+                    </p>
+                    <div style="border-top: 1px solid #E5E7EB; padding-top: 18px; margin-top: 18px;">
+                        <p style="font-size: 0.9rem; color: #6B7280; margin-bottom: 6px;">Curated by:
+                            <strong>Lilian</strong>
+                        </p>
+                        <p style="font-size: 0.9rem; color: #6B7280;">Front-End Web Development . Personal Reading
+                            Catalog</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="scripts/app.js"></script>
+</body>
+
+</html>

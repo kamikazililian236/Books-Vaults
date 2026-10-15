@@ -1,0 +1,10 @@
+/* ==================================================================
+   Book & Notes Vault - Lilian's Stylesheet
+   clean. simple, and semantic css
+   ==================================================================*/
+
+   /* Design Tokens - Homevia Luxury Gregie & Crisp White Palette */
+   :root {
+    --bg-sidebar: #181614;
+    --bg-sidebar-active: rgba()
+   }

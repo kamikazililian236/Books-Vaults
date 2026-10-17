@@ -29,8 +29,8 @@
           // Rule 1: Titles no leading or trailing spaces
           const titleRegex = /^[A-Za-z0-9]+(?:[ -][A-Za-z0-9]+)*$/;
           assert("Title valid - The Midnight Library", titleRegex.test("The Midnight Library"));
-          assert("Title invalid - leading space", !titleRegex.test("The Midnight Library "));
-          assert("Title invalid - trailing space", !titleRegex.test("The Midnight Library"));
+          assert("Title invalid - leading space", !titleRegex.test(" The Midnight Library "));
+          assert("Title invalid - trailing space", !titleRegex.test("The Midnight Library "));
            
           // Rule 2: Pages must be positive integer
           const pagesRegex = /^[1-9]\d*$/;
@@ -40,7 +40,7 @@
           assert("Pages invalid - negative", !pagesRegex.test("-50"));
 
           // Rule 3: Date format YYYY-MM-DD
-          const dateRegex = /^\{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/;
+          const dateRegex = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/;
           assert("Date valid - 2026-10-08", dateRegex.test("2026-10-08"));
           assert("Date valid - 2026-07-22", dateRegex.test("2026-07-22"));
           assert("Date invalid - wrong format", !dateRegex.test("08-10-2026"));

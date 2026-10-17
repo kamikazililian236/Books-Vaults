@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const formStatus = document.getElementById('form-status');
   const formSynopsis = document.getElementById('formm-synopsis');
   const btnCancelForm = document.getElementById('btn-cancel-form');
-  const FormCoverFile = document.getElementById('form-cover-file');
+  const formCoverFile = document.getElementById('form-cover-file');
   const CoverPreviewRow = document.getElementById('cover-preview-row');
   const coverPreviewImg = document.getElementById('cover-preview-img');
   const btnRemoverCover = document.getElementById('btn-remove-cover');
@@ -652,7 +652,7 @@ function renderCatalog() {
         toggleBookStatus(id);
       });
     });
-     document.querySelectoreAll('.btn-edit').forEach(btn => {
+     document.querySelectorAll('.btn-edit').forEach(btn => {
       btn.addEventListener('click', (e) => {
         const id = parseInt(e.currentTarget.dataset.id, 10);
         startEditBook(id);
@@ -697,7 +697,7 @@ function startEditBook(bookId) {
   const book = books.find(b => b.id ===bookId);
   if (!book) return;
 
-  if (formViewTitle) formViewTitlt.textContent = `Edit Book`;
+  if (formViewTitle) formViewTitle.textContent = `Edit Book`;
   if (editingBookIdInput) editingBookIdInput.value = book.id;
   if (formTitle) formTitle.value = book.title;
   if (formAuthor) formAuthor.value = book.author;
@@ -705,7 +705,7 @@ function startEditBook(bookId) {
   if (formTag) formTag.value = book.tag || '';
   if (formDate) formDate.value = book.date || '';
   if (formStatus) formStatus.value = book.status || 'To Read';
-  if (formmSynopsis) formSynopsis.value = book.synopsis || '';
+  if (formSynopsis) formSynopsis.value = book.synopsis || '';
   if (formIsFavorite) formIsFavorite.checked = !!book.isFavorite;
 
   newlyPickedCoverFile = '';

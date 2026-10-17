@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let books = JSON.parse(localStorage.getItem('lilian_vault_books')) || defaultBooks;
   // Sanitize any deprecated image filenames in existing localStorage
   books.forEach(b => {
-    if (b.cover && (b.cover.include('midnight-library') || b.cover.includes('computer-sytems'))) {
+    if (b.cover && (b.cover.includes('midnight-library') || b.cover.includes('computer-sytems'))) {
       b.cover = './assets/empty-book.svg';
     }
     if (b.coverImage && (b.coverImage.includes('midnight-library') || b.coverImage.includes('computer-systems'))) {
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (hamburgerBtn) {
     hamburgerBtn.addEventListener('click', () => {
-      if (navDrawer && navDrawer.classList.contains('active'))}
+      if (navDrawer && navDrawer.classList.contains('active')) {
       closeDrawer();
 
   } else {
@@ -161,8 +161,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 }
 
-if (drawerCloseBtn) draweerCloseBtn.addEventListener('click', closeDrawer);
+if (drawerCloseBtn) drawerCloseBtn.addEventListener('click', closeDrawer);
 if (drawerBackdrop) drawerBackdrop.addEventListener('click', closeDrawer);
+
+// Switch active and update navigation bar state.
+// Updates history state and breadcrumb text for the screen 
 
 function switchView(viewName, pushHistory = true) {
   if (!viewName) viewName = 'home';
@@ -171,7 +174,7 @@ function switchView(viewName, pushHistory = true) {
 
   if (pushHistory) {
     if (viewName === 'home') {
-      history.pushState({ view: 'home' }, '', Window.loaction.pathname + window.location.search);
+      history.pushState({ view: 'home' }, '', window.location.pathname + window.location.search);
     } else {
       history.pushState({ view: viewName }, '', '#' + viewName);
     }
@@ -186,10 +189,11 @@ function switchView(viewName, pushHistory = true) {
   });
 
   drawerItems.forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.view === viewNmae);
+    btn.classList.toggle('active', btn.dataset.view === viewName);
+  });
 
-    viewSections.forEach(section) => {
-      section.classList.toggle('active', section.id === `view-${viewNmae}`);
+    viewSections.forEach(section => {
+      section.classList.toggle('active', section.id === `view-${viewName}`);
     });
 
   const titles = {
@@ -265,7 +269,7 @@ if (breadcrumbHomeBtn) {
 
 navItems.forEach(btn => {
   btn.addEventListener('click', () => {
-    const target view = btn.dataset.view;
+    const targetView = btn.dataset.view;
     if (targetView === 'add-book') resetBookForm();
     switchView(targetView);
   });
@@ -279,6 +283,9 @@ drawerItems.forEach(btn => {
   });
 });
 
+// Update home hero card with the active reading book details
+//Displays placeholder artwork if no book is currently marked as reading
+
 function updateHomeHeroStats() {
   const spotlightTitle = document.getElementById('home-spotlight-title');
   const spotlightAuthor = document.getElementById('home-spotlight-author');
@@ -289,7 +296,7 @@ function updateHomeHeroStats() {
 
   if (!spotlightTitle) return;
 
-  const (activeRead) = books.find(b => b.status === 'Reading');
+  const activeRead = books.find(b => b.status === 'Reading');
 
   if (activeRead) {
     spotlightTitle.textContent = activeRead.title;
@@ -337,7 +344,7 @@ const homeSpotlightViewBtn = document.getElementById('home-spotlight-view-btn');
 if (homeSpotlightViewBtn) homeSpotlightViewBtn.addEventListener('click', () => switchView('catalog'));
 
 goAddBtns.forEach(btn => {
-  btn.addEventListener('clcik', () => {
+  btn.addEventListener('click', () => {
     resetBookForm();
     switchView('add-book');
   });
@@ -371,7 +378,7 @@ function persistData() {
   renderCatalog();
 }
 
-function matchesSearch(text, query, useRegex, isCaseSensitive)
+function matchesSearch(text, query, useRegex, isCaseSensitive) {
 if (!query) return true;
 if (!text) return false;
 if (useRegex) {
@@ -388,12 +395,15 @@ const q = isCaseSensitive ? query : query.toLowerCase();
 return t.includes(q);
       }
 
+// Calculate dashboard analytics for books read, pages, and weekly additions
+// Formats numerical page values and updates status cards   
+
 function renderDashboard() {
   const currentBook = books.find(b => b.status === 'Reading');
   if (statCurrentRead) statCurrentRead.textContent = currentBook ? currentBook.title : 'None';
 
   const completedReads = books.filter(b => b.status === 'Read').length;
-  if (StatBooksRead) statBooksRead.textContent = completedRReads.toString();
+  if (StatBooksRead) statBooksRead.textContent = completedReads.toString();
 
   const totalPages = books.reduce((acc, b) => acc + (parseInt(b.pages, 10) || 0), 0);
   if (statTotalPages) statTotalPages.textContent = totalPages.toLocaleString();
@@ -484,6 +494,9 @@ function populateCatalogTags() {
   });
   catalogFilterTag.innerHTML = optionsHtml;
 }
+
+// Filter and sort books based on search query, tags, and status
+// Renders responsive table rows for desktop and cards for mobile
 
 function renderCatalog() {
   populateCatalogTags();
@@ -608,7 +621,7 @@ function renderCatalog() {
           <p style="fonr-size: 0.88rem; line-height: 1.5; color: #374151;">${esacpeHtml(book.synopsis || 'No synopsis added yet for this book.')}</p>
           </div>
           </div>
-          : ''}
+          `: ''}
           <div class="mobile-book-card-footer">
           <button type="button" class="btn-action btn-view" data-id=${book.id}">{isExpanded ? 'Hide' : 'View'}</button>
           <button type="button" class="btn-action btn-edit data-id="${book.id}">Edit</button>
@@ -618,8 +631,8 @@ function renderCatalog() {
           </div>
           `;
         }).join('');
-      }
     }
+  }
 
     document.querySelectorAll('.btn-view, .btn-close-detail').forEach(btn => {
       btn.addEventListener('click', (e) => {
@@ -660,19 +673,25 @@ function renderCatalog() {
     showToast(`Status updated to "${nextStatus}"`);
   }
 
+  // Delete selected book record from collection user confirmation
+  // Synchronizes updated list to localStorage and refreshes views
+
   function deleteBook(bookId) {
     const book = books.find(b => b.id === bookId);
     if (!book) return;
-    if ( confirm(`Are you sure want to delete "${book.title}"?`))
-      books = books.fiilter(b => b.id !== bookId);
+    if ( confirm(`Are you sure want to delete "${book.title}"?`)) {
+      books = books.filter(b => b.id !== bookId);
     expandedBookIds.delete(bookId);
     persistData();
     renderCatalog();
     renderDashboard();
     showToast(`Deleted "${book.title}"`);
-}
+    }
 
-}
+  }
+
+// Start editing existing book by populating form input fields
+// Switches view to the add-book form screen
 
 function startEditBook(bookId) {
   const book = books.find(b => b.id ===bookId);
@@ -710,7 +729,7 @@ function resetBookForm() {
   if (edititngBookIdInput) editingBookIdInput.value = '';
   if (bookForm) bookForm.reset();
   if (formDate) {
-    formDate.value = new Date().toISOString().split('T')[0};
+    formDate.value = new Date().toISOString().split('T')[0];
     }
     if (formSynopsis) formSynopsis.value = '';
     if (formCoverFile) formCoverFile.value = '';
@@ -719,6 +738,9 @@ function resetBookForm() {
     if (coverPreviewRow) coverPreviewRow.style.display = 'none';
     if (coverPreviewImg) coverPreviewImg.src = '';
   }
+
+  // Form submit listener to save new or edited book records
+  // Validates fields and generates unique IDs with timestamps
    
   if (bookForm) {
     bookForm.addEventListener('submit', (e) => {
@@ -732,7 +754,7 @@ function resetBookForm() {
       const status =formStatus.value;
       const synopsis = formSynopsis ? formSynopsis.value.trim() : '';
       const editId = edititngBookIdInput.value ? parseInt(editingBookIdInput.value, 10): null;
-      if (!little || !author) {
+      if (!title || !author) {
         alert('Please fill out the title and aouther.');
         return;
       }
@@ -746,7 +768,7 @@ function resetBookForm() {
           } else if (currentUpLoadedCover) {
             finalCover = currentUploadedCover;
           } else if (books[index]) {
-             finalCover = ooks[index].coverImage || books[index].cover || './assets/empty-book.svg';
+             finalCover = books[index].coverImage || books[index].cover || './assets/empty-book.svg';
           }
 
           books[index] = {
@@ -754,10 +776,10 @@ function resetBookForm() {
             title,
             author,
             pages,
-            tag
+            tag,
             date,
             status,
-            synopsis: synopsis || books[index].synopsis || '''
+            synopsis: synopsis || books[index].synopsis || '',
             cover: finalCover,
             coverImage: finalCover,
             isFavorite: formIsFavorite ? formIsFavorite.checked : false
@@ -801,12 +823,15 @@ function resetBookForm() {
 
     settingsForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      readerGoal = prefReaderGoal ? parseImt(prefReaderGoal.value, 10) || 25 : 25;
+      readerGoal = prefReaderGoal ? parseInt(prefReaderGoal.value, 10) || 25 : 25;
       readerMotto = prefReaderMotto ? prefReadeMotto.value.trim() : 'A quiet space for every book.';
       persistData();
-      showToast('Reading target saved successfully.';
+      showToast('Reading target saved successfully.');
       });
     }
+
+    // Export book collection as formatted JSON file download
+    // Import external JSON array of books into localStorage
 
     if (btnExportJson) {
       btnExportJson.addEventListener('click', () => {
@@ -819,13 +844,16 @@ function resetBookForm() {
         downloadAnchor.remove();
         showToast('Exported books JSON.');
       });
+    
+  
+  }
 
       if (btnimportTrigger && importFileInput) {
         btnImportTrigger.addEventListener(' click', () => {
           importFileInput.click();
         });
 
-        importFileInput,addEventListener('change', (e) => {
+        importFileInput.addEventListener('change', (e) => {
           const file = e.target.files[0];
           if (!file) return;
 
@@ -867,9 +895,9 @@ function resetBookForm() {
           switchView(defaultViewSetting,false);
           history.replaceState({ view: defaultViewSetting }, '', '#' + defaultViewSetting);
         } else {
-          history.replacesState({ view: 'home' }, '', window.location.pathname + window.location.search);
+          history.replaceState({ view: 'home' }, '', window.location.pathname + window.location.search);
         } 
-      });
+      
 
       function escapeHtml(str) {
         if (!str) return '';
@@ -878,6 +906,29 @@ function resetBookForm() {
           return div.innerHTML;
         
       }
+
+    });
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

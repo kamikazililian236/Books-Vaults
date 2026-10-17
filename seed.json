@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "title": "The Midnight Library",
+    "author": "Matt Haig",
+    "pages": 288,
+    "tag": "Fiction",
+    "dates": "2026-10-08",
+    "status": "Reading",
+    "isFavorite": false,
+    "cover": "./assets/the-midnight-library.jpg",
+    "coverImage": "./assets/the-midnight-library.jpg",
+    "synopsis": "Between life and death there is a library where shelves go on forever."
+  
+  },
+  {
+    "id": 2,
+    "title": "Computer Systems",
+    "author": "Randal Bryant & David O'Hallaron",
+    "pages": 1104,
+    "tag": "True Events",
+    "date": "2026-10-10",
+    "status": "Read",
+    "isFavorite": true,
+    "cover": "./assets/computer-systems.jpg.jpg",
+    "coverImage": "./assets/computer-systems.jpg.jgp",
+    "synopsis": "A programmer's perspective on computer architecture and memory hierarchy."
+
+  },
+  {
+    "id": 3,
+    "title": "A Small Fortune",
+    "author": "Roise Dastgir",
+    "pages": "384",
+    "tag": "Drama",
+    "date": "2026-07-22",
+    "status": "Reading",
+    "isFavorite": true,
+    "cover": "./assets/a-small-fortune.jpg",
+    "coverImage": "./assets/a-small-fortune.jpg",
+    "synopsis": "A man struggles to balance family obligations and personal choices after receiving money."
+
+  },
+  {
+    "id": 4,
+    "title": "Gravity is the thing",
+    "author": "Jaclyn Moriarty",
+    "pages": "416",
+    "tag": "Mystery",
+    "date": "2026-06-11",
+    "status": "To Read",
+    "isFavorite": false,
+    "cover": "./assets/gravity-is-the-thing.jpg",
+    "coverImage": "./assets/gravity-is-the-thing.jpg",
+    "synopsis": " A woman searches for answers about her missing brother and a mysterious book."
+    
+  },
+  {
+    "id": 5,
+    "title": "Hurricane Summer",
+    "author": "Asha Bromfield",
+    "pages": "384",
+    "tag": "Drama",
+    "date": "2026-09-20",
+    "status": "To Read",
+    "isFavorite": true,
+    "cover": "./assets/hurricane-summer.jpg",
+    "coverImage": "./assets/hurricane-summer.jpg",
+    "synopsis": "A teenage girl discovers family secrets while visiting Jamaica."
+
+  },
+  {
+    "id": 6,
+    "title": "The Book Thief",
+    "author": "Markus Zusak",
+    "pages": "592",
+    "tag": "Drama",
+    "dates": "2026-10-03",
+    "status": "Reading",
+    "isFavorite": true,
+    "cover": "./assets/the-book-thief.jpeg",
+    "coverImage": "./assets/the-book-thief.jpeg",
+    "synopsis": "A young girl finds comfort in books during World War II."
+
+  },
+  {
+    "id": 7,
+    "title": "The Water Cure",
+    "author": " Sophie Mackintosh",
+    "pages": "288",
+    "tag": "Fiction",
+    "dates": "2026-08-04",
+    "status": "Read",
+    "isFavorite": false,
+    "cover": "./assets/the-water-cure.jpg",
+    "coverImage": "./assets/the-water-cure.jpg",
+    "synopsis": "Three isolated sisters question their upbringing when strangers arrive."
+
+  },
+  {
+    "id": 8,
+    "title": "The Truth Unravels",
+    "author": "John Premade",
+    "pages": "456",
+    "tag": "Mystery",
+    "dates": "2026-09-21",
+    "status": "To Read",
+    "isFavorite": true,
+    "cover": "./assets/the-truth-unravels.jpeg",
+    "coverImage": "./assets/the-truth-unravels.jpeg",
+    "synopsis": "A man living in London where he finds out the truth about what he has been searcing for his entire life."
+
+  },
+  {
+    "id": 9,
+    "title": "The Island",
+    "author": "Antigone Kefala",
+    "pages": "316",
+    "tag": "fiction",
+    "dates": "2026-10-13",
+    "status": "Read",
+    "isFavorite": true,
+    "cover": "./assets/the-island.jpg",
+    "coverImage": "./assets/the-island.jpg",
+    "synopsis": "Life exceptations."
+    
+  },
+  {
+    "id": 10,
+    "title": "Verity",
+    "author": "Colleen Hoover",
+    "pages": "336",
+    "tag": "Drama",
+    "dates": "2026-08-28",
+    "status": "Reading",
+    "isFavorite": false,
+    "cover": "./assets/verity.jpg",
+    "coverImage": "./assets/verity.jpg",
+    "synopsis": "Lowen, a struggling writer, discovers a disturbing manuscript filled with dark secrets while working for a famous author, Verity Crawford."
+
+  }
+]

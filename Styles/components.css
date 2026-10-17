@@ -1,145 +1,462 @@
-.app-layout {
-  display: flex;
-  min-height: 100vh;
-}
-
-.main-content {
-  flex: 1;
-  padding: 24px 32px 48px;
-  max-width: 1200px;
-  width: 0 auto;
-}
-
-/* Top Header Bar */
-.topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 20px;
+/* Cards Containers with soft drop shadows and rounded corners */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
   margin-bottom: 24px;
-  border-bottom: 1px solid var(--border-color)
 }
 
-.topbar-left {
-  display: flex;
-  align-items: center;
-  gap: 16px;
+/* Home Page */
+.home-centered-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 32px 16px;
 }
 
-.hamburger-btn {
+.home-headline {
+  font-size: 2.25rem;
+  color: #111827;
+  margin-bottom: 8px;
+  font-family: var(--font-serif);
+}
+
+.home-subheadline {
+  font-size: 1.1rem;
+  color: #6B7280;
+  margin-bottom: 24px;
+}
+
+.home-actions-centered {
   display: flex;
-  flex-direction: column;
-  gap: 5px;
-  padding: 8px;
-  border-radius: var(--radius-sm);
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+/* Featured spotlight card showing the book currently being read */
+.spotlight-centered-card {
   background: #FFF;
   border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  display: flex;
+  gap: 32px;
+  text-align: left;
+  box-shadow: var(--shadow-sm);
+  align-items: center;
 }
 
-.hamburger-btn .bar {
-  width: 20px;
-  height: 2px;
-  background-color: var(--text-main);
-  border-radius: 2px;
-}
-
-/* View Section Visibility */
-.view-section {
-display: none;
-}
-
-.view-section.active {
+.spotlight-cover-large { flex-shrink: 0; }
+.spotlight-cover-img {
+  width: 140px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  background: #E5E7EB;
   display: block;
 }
 
-/*Navigation Drawer */
-.drawer-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.45);
-  backdrop-filter: blur(2px);
-  z-index: 998;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.25s ease;
+.spotlight-simple-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: block;
+  margin-bottom: 6px;
 }
 
-.drawer-backdrop.active {
-  opacity: 1;
-  pointer-events: auto;
+.spotlight-title-large {
+  font-size: 1.5rem;
+  color: #111827;
+  margin-bottom: 4px;
+  font-family: var(--font-serif);
 }
 
-.nav-drawer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 280px;
-  background: var(--bg-sidebar);
-  color: #FFF;
-  z-index: 999;
-  transform: translateX(-100%);
-  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-  display: flex;
-  flex-direction: column;
-  padding: 24px 20px;
+.spotlight-author-large {
+  font-size: 0.95rem;
+  color: #6B7280;
+  margin-bottom: 12px;
 }
 
-.nav-drawer.active {
-  transform: translateX(0);
+.spotlight-qoute-larger {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: #4B5563;
+  line-height: 1.6;
+  margin-bottom: 20px;
 }
 
-.drawer-top {
-  display: flex;
+.btn-link-action {
+  color: var(--accent-dark);
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 4px;
+}
+
+/* column statistics grid displaying total books and pages */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.stat-card {
+  background: #FFF;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.stat-label, .stat-lable {
+  font-size: 0.8rem;
+  color: #6B7280;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.stat-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* Favorite Book Card layout with gold badges and cover preview */
+.favorite-book-card {
+  background: #FFF;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  box-shadow: var(--shadow-sm);
   margin-bottom: 24px;
 }
 
-.drawer-top .brand-title {
-  color: #FFF;
-  font-size: 1.25rem;
-}
-
-.drawer-close {
-  color: #9CA3AF;
-  padding: 4px;
-}
-
-.drawer-section-title {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  color: #6B7280;
-  margin: 16px 0 8px;
-}
-
-.drawer-nav {
+.favorite-card-content {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
-  flex: 1;
+  gap: 28px;
+  align-items: center;
 }
 
-.drawer-item {
+.favorite-cover-preview { flex-shrink: 0; }
+.favorite-cover-img {
+  width: 130px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  background: #E5E7EB;
+  display: block;
+}
+
+.favorite-card-badge-row {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 10px 14px;
-  border-radius: var(--radius-sm);
-  color: #D1D5DB;
-  font-size: 0.92rem;
-  transition: background 0.15s, color 0.15s;
+  gap: 8px;
+  margin-bottom: 6px;
 }
 
-.drawer-item:hover, .drawer-items.active {
-  background: rgba(255, 255, 255, 0.1);
-  color: #FFF;
+.favorite-card-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
-.drawer-footer {
-  font-size: 0.8rem;
+.favorite-card-subbadge { font-size: 0.8rem; color: #9CA3AF;}
+.favorite-book-title {
+  font-size: 1.4rem;
+  color: #111827;
+  margin: 4px 0;
+  font-family: var(--font-serif);
+}
+
+.favorite-book-meta {
+  font-size: 0.9rem;
   color: #6B7280;
-  padding-top: 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 12px;
 }
+
+.favorite-book-synopsis {
+  font-size: 0.92rem;
+  color: #4B5563;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+.favorite-card-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.btn-toggle-status-pill {
+  padding: 5px 12px;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: #DBEAFE;
+  color: #1E40AF;
+  border: 1px solid #BFDBFF;
+  cursor: pointer;
+}
+
+/* Catalog View: Search & Toolbar */
+.view-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.view-header-actions { display: flex; gap: 10px; }
+
+/* Search input field with regex filter and case sensitive checkboxes */
+.search-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.search-input-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 260px;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 14px 10px 38px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  background: #FFF;
+  outline: none;
+}
+
+.search-input:focus { border-color: #111827; }
+.search-icon {
+  position: absolute;
+  left: 12px;
+  width: 16px !important;
+  height: 16px !important;
+  color: #9CA3AF;
+  pointer-events: none;
+}
+
+.checkBox-lable {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.88remm;
+  color: #4B5563;
+  cursor: pointer;
+}
+
+.toolbar-strip {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 20px;
+  background: #FFF;
+  padding: 12px 18px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  flex-wrap: wrap;
+}
+
+.select-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: #4B5563;
+}
+
+.select-field select, .form-select {
+  padding: 6px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  background: #FFF;
+  outline: none;
+}
+
+.table-count-label, #table-count-label {
+  font-size: 0.85rem;
+  color: #6B7280;
+  margin-bottom: 10px;
+  font-weight: 500;
+  display: block;
+}
+
+/*Catalog Table with custom borders and zebra hover  */
+.table-container, .desktop-only-table {
+  background: #FFF;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 24px;
+}
+
+.catalog-table, .books-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.catalog-table th, .books-table th{
+  background: #F9FAFB;
+  padding: 12px 16px;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #6B7280;
+  font-weight: 600;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.catalog-table td, .books-table td {
+  padding: 14px 16px;
+  font-size: 0.9rem;
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: middle;
+}
+
+.catalog-table tr:last-child td, .books-table tr:last-child td { border-bottom: none; }
+.catalog-table tr:hover, .books-table tr:hover { background: #FAFAFA; }
+
+/* Action Button styles with clear hover and active state trasnitions   */
+.btn {
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.15s;
+}
+
+.btn-primary { background: #111827; color: #FFF; }
+.btn-primary:hover { background: #374151; }
+.btn-secondary { background: #FFF; border-color: var(--border-color); color: #1F2937; }
+.btn-secondary:hover { background: #F9FAFB; }
+.btn-sm { padding: 5px 12px; font-size: 0.82rem; }
+
+.btn-action {
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  background: #FFF;
+  cursor: pointer;
+}
+
+.btn-delete { color: #EF4444; }
+.btn-delete:hover { background: #FEE2E2; border-color: #FECACA; }
+
+/* Add Book Form Card with book inputs and form styling with top aligned labels , focused borders */
+.form-card, .book-form-card {
+  background: #FFF;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+  max-width: 800px;
+  margin: 0 auto 32px;
+}
+
+.form-group, .form-field { margin-bottom: 20px; }
+.form-label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 6px;
+}
+
+.form-input, .form-textarea, textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  font-size: 0.92rem;
+  font-family: inherit;
+  background: #FFF;
+  outline: none;
+}
+
+.form-input:focus, .form-textarea:focus, textarea:focus, textarea:focus { border-color: #111827; }
+.form-acions { display: flex; gap: 12px; margin-top: 28px; }
+
+/* Toast Notification to save and delete notifications on the bottom right corner */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  padding: 12px 20px;
+  background: #111827;
+  color: #FFF;
+  border-radius: var(--radius-md);
+  font-size: 0.88rem;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: all 0.25s ease;
+  z-index: 1000;
+}
+
+.toast.show { opacity: 1; transform: translateY(0); }
+
+/* Responsive where mobile view hides desktop tables and stacks all cards vertically */
+@media (min-width: 76px) {
+  #mobile-books-container, .mobile-books-container { display: none; }
+}
+
+@media (max-width: 768px) {
+  .desktop-only-table, .table-container { display:none; }
+  .stats-row { grid-template-columns: 1fr; }
+  .spotlight-centered-card, .favorite-card-content {flex-direction: column; text-align: center; }
+  .favorite-card-actions { justfiy-content: center; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,3 +1,7 @@
+
+
+https://github.com/user-attachments/assets/05cd4670-466a-49f5-a308-71f1b6ced463
+
 # Book & Notes Vault
 
 A personal reading tracker and book catalog built with vanilla HTML, CSS, and JavaScript. 

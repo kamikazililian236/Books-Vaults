@@ -10,7 +10,12 @@ Built as an individual summative assignment exploring accessible design, regex v
 - **Author:** Lilian
 - **Theme:** Book & Notes Vault
 - **Live GitHub Pages URL:** [https://kamikazililian236.github.io/Books-Vaults/](https://kamikazililian236.github.io/Books-Vaults/)
-- **Demo Video (Unlisted):** [Paste Your YouTube / Drive Link Here]
+- **Demo Video (Unlisted): <img width="850" height="1280" alt="WhatsApp Image 2026-10-18 at 12 53 28" src="https://github.com/user-attachments/assets/a3ca7377-7ddd-469d-9d83-9dbf1afe59b7" />
+<img width="916" height="1280" alt="WhatsApp Image 2026-10-18 at 12 53 25" src="https://github.com/user-attachments/assets/35ef8fa0-60fd-419e-a10f-644bb83741c9" />
+<img width="838" height="1280" alt="WhatsApp Image 2026-10-18 at 12 53 23" src="https://github.com/user-attachments/assets/a7f8495c-ec4a-4fea-a528-3a8c282383a2" />
+
+
+
 
 ---
 

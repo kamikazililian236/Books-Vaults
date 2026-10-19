@@ -1,75 +1,127 @@
-
-
-https://github.com/user-attachments/assets/05cd4670-466a-49f5-a308-71f1b6ced463
-
 # Book & Notes Vault
 
-A personal reading tracker and book catalog built with vanilla HTML, CSS, and JavaScript. 
-Built as an individual summative assignment exploring accessible design, regex validation, and state persistence without external frameworks or libraries.
+A personal reading tracker and book catalog built with vanilla HTML, CSS and JavaScript (no frameworks). Built as an individual summative assignment (Building Responsive UI).
 
 - **Author:** Lilian
 - **Theme:** Book & Notes Vault
 - **Live GitHub Pages URL:** [https://kamikazililian236.github.io/Books-Vaults/](https://kamikazililian236.github.io/Books-Vaults/)
-- **Demo Video (Unlisted):https://youtu.be/eXt_e5BpbW8
+- **Demo Video (Unlisted):** [https://youtu.be/eXt_e5BpbW8](https://youtu.be/eXt_e5BpbW8)
 
+---
 
-# Project Overview & Design Wireframes
+## Project Overview
 
-The app was planned with mobile-first accessibility in mind, helping readers log books, track reading milestones, filter by genre, and search using live regular expressions.
+Book & Notes Vault helps a reader keep a quiet space for every book: log books, mark what is being read, search the collection, and back up the data as a JSON file.
 
-## Early Wireframe & UI Sketches
-<!-- Put your sketch images inside the assets folder and link them here --->
-![Wireframe Desktop & Mobile](./assets/wireframe-sketch.png)
+## Wireframes & UI Sketches
 
- <img width="850" height="1280" alt="WhatsApp Image 2026-10-18 at 12 53 28" src="https://github.com/user-attachments/assets/a3ca7377-7ddd-469d-9d83-9dbf1afe59b7" />
-<img width="916" height="1280" alt="WhatsApp Image 2026-10-18 at 12 53 25" src="https://github.com/user-attachments/assets/35ef8fa0-60fd-419e-a10f-644bb83741c9" />
-<img width="838" height="1280" alt="WhatsApp Image 2026-10-18 at 12 53 23" src="https://github.com/user-attachments/assets/a7f8495c-ec4a-4fea-a528-3a8c282383a2" />
+<img width="850" height="1280" alt="Wireframe 1" src="https://github.com/user-attachments/assets/a3ca7377-7ddd-469d-9d83-9dbf1afe59b7" />
+<img width="916" height="1280" alt="Wireframe 2" src="https://github.com/user-attachments/assets/35ef8fa0-60fd-419e-a10f-644bb83741c9" />
+<img width="838" height="1280" alt="Wireframe 3" src="https://github.com/user-attachments/assets/a7f8495c-ec4a-4fea-a528-3a8c282383a2" />
 
+---
 
-# Core Features
-- **Curated Reading Dashboard:** Real-time statistics including total books read, total pages completed, books added this week, and a spotlight showcase for your current favorite book.
-- **My Library Catalog:** Clean records view with inline expandable book details (synopsis and cover art), status toggling (`To Read`, `Reading`, `Read`), and inline edit/delete actions.
-- **Safe Regex Search & Highlighting:** Real-time search powered by dynamic regex compilation wrapped in `try/catch` to safely catch invalid patterns, with matched text wrapped in accessible `<mark>` tags.
-- **Form Validation with Real-time Feedback:** Strict input checks ensuring clean database records with inline error messages.
-- **Reading Goal Tracker with ARIA Live Announcements:** A reading target system that announces status changes politely (`aria-live="polite"`) when approaching the goal, and assertively (`aria-live="assertive"`) when the target is reached or exceeded.
-- **Data Persistence & Portable Backup:** Automatically synchronizes state to `localStorage` with JSON export and import capabilities.
-- **Responsive Layout:** Designed mobile-first with smooth transitions across mobile (360px), tablet (768px), and desktop (1024px+).
+## Pages
 
+| Page | What it does |
+|------|--------------|
+| **Home** | Welcome screen with a spotlight card showing the book currently being read |
+| **Dashboard** | Current read, number of books read, books added this week, and a favorite book showcase card |
+| **My Library** | Table of all books (cards on mobile) with search, sort, tag and status filters |
+| **Add / Edit Book** | Form to add a new book or edit an existing one, with optional cover upload |
+| **Settings** | Save an annual reading goal and a personal reading note |
+| **About** | Purpose of the app and who made it |
 
+## Features
 
-# Regex Catalog
+- **Library catalog:** 10 seeded books, with inline expandable details (cover and synopsis) per book.
+- **Add, edit and delete:** Edit fills the form with the book's data. Delete asks for confirmation first.
+- **Status toggle:** Click a book's status to cycle `To Read` → `Reading` → `Read`.
+- **Search with optional regex:** Searches title, author and tag. Two checkboxes switch on **Regex filter** and **Case sensitive**.
+- **Filters and sorting:** Filter by tag and by status. Sort by title.
+- **Cover upload:** Choose an image from your device; it is stored with the book.
+- **Persistence:** All changes are saved automatically to `localStorage`, so data stays after a refresh.
+- **JSON export / import:** Export downloads `vault_books_export.json`. Import loads a JSON file and rejects files that are not a list of books.
+- **Responsive layout:** Table on desktop, card list on mobile, with a slide-out navigation drawer.
+- **Navigation:** Back button, breadcrumb, and page links that work with the browser's back button.
 
-| Rule | Validation / Target | Regular Expression Pattern | Example Valid Input | Example Rejected Input |
-|------|---------------------|----------------------------|---------------------|------------------------|
-| **1. Title / Author** | Disallows leading/trailing spaces & collapse double spaces | `/^\S(?:.*\S)?$/` | `Clean Architecture` | ` Clean Architecture ` |
-| **2. Page Count** | Positive integers only (> 0, no decimals) | `/^[1-9]\d*$/` | `432` | `-5`, `0`, `12.5` |
-| **3. Date Added** | Strict ISO calendar format (YYYY-MM-DD) | `/^\d{4}-(0[1-9]\|1[0-2])-(0[1-9]\|[12]\d\|3[01])$/` | `2026-10-10` | `2026/10/10`, `10-10-2026` |
-| **4. Tag / Category** | Letters, spaces, and hyphens | `/^[A-Za-z]+(?:[ -][A-Za-z]+)*$/` | `Web Dev`, `Sci-Fi` | `Tag@#$`, `Tech-` |
-| **5. Advanced Regex** | Back-reference detecting repeated words/surnames | `/\b(\w+)\s+\1\b/i` | Catches `"Martin Martin"`, `"The The"` | Clean single words |
+## Data Model
 
+Each book is stored like this:
 
+```json
+{
+  "id": 1,
+  "title": "The Midnight Library",
+  "author": "Matt Haig",
+  "pages": 288,
+  "tag": "Fiction",
+  "date": "2026-10-08",
+  "status": "Reading",
+  "isFavorite": false,
+  "cover": "./assets/the-midnight-library.jpg",
+  "coverImage": "./assets/the-midnight-library.jpg",
+  "synopsis": "Between life and death there is a library where shelves go on forever."
+}
+```
 
-# Keyboard Navigation Map
+`seed.json` holds the starting collection. If nothing is saved yet, the app loads these books.
 
-The app is fully operable without a mouse:
-- `Tab`: Move forward through interactive links, form inputs, and buttons.
-- `Shift + Tab`: Move backward through elements.
-- `Enter` / `Space`: Activate buttons, toggles, and drawer items.
-- `Escape`: Instantly close the mobile navigation drawer.
-- Visible focus rings (`:focus-visible`) ensure clear orientation across all elements.
+---
 
+## Regex Catalog
 
+The search box compiles the typed pattern with `new RegExp(...)` inside a `try/catch`, so an invalid pattern never crashes the app. It simply shows no results. Turn on **Regex filter** to use these:
 
-# Accessibility (a11y) Notes
-- **Semantic Landmarks:** Proper document structure using `<header>`, `<nav>`, `<main>`, `<aside>`, `<section>`, and `<footer>`.
-- **Form Labels:** Every `<input>` and `<select>` is explicitly bound to a `<label for="...">`.
-- **Screen Reader Announcements:** The reading milestone tracker uses `role="status"` and `aria-live` regions to announce goal updates.
-- **Skip Link:** A visible skip-to-content link is present at the top of the page.
-- **Contrast:** High contrast text on warm background passing WCAG AA standards.
+| Pattern | What it finds | Example match |
+|---------|---------------|---------------|
+| `^The` | Titles, authors or tags that start with "The" | The Book Thief, The Island |
+| `Drama\|Mystery` | Either word (the bar means OR) | Books tagged Drama or Mystery |
+| `^fiction$` | An exact tag | Fiction |
+| `\b(\w+)\s+\1\b` | **Advanced:** a repeated word (back-reference) | "The The" |
+| `(` | Invalid pattern (edge case) | No results, no crash |
 
+With **Case sensitive** on, `^the` finds nothing because the titles start with a capital T.
 
+## Keyboard Map
 
-# How to Run the Automated Unit Tests
-1. Download or clone this repository to your machine.
-2. Double-click **`tests.html`** or open it inside Chrome, Firefox, or Edge.
-3. The test suite will automatically execute unit assertions for all regex validation rules, safe compiler handling, and dashboard statistics calculations.
+All controls are native buttons, links, inputs and dropdowns, so the app can be used without a mouse:
+
+| Key | Action |
+|-----|--------|
+| `Tab` / `Shift + Tab` | Move forward / backward through buttons, links and form fields |
+| `Enter` | Press a button or link (open the menu, open My Library, View, Edit) |
+| `Space` | Tick a checkbox (Regex filter, Case sensitive, Favorite) |
+| `Arrow keys` | Change the choice in the Sort, Tag and Status dropdowns |
+
+## Accessibility Notes
+
+- Semantic structure with `<header>`, `<nav>`, `<main>`, `<section>` and `<aside>`, and `lang="en"` on the page.
+- Form fields use `<label for="...">` bound to their inputs.
+- Icon-only buttons have `aria-label` text (back, menu, close).
+- Delete asks for confirmation to prevent accidents.
+
+## How to Run
+
+1. Clone or download this repository.
+2. Open the folder in VS Code and run **Live Server** on `index.html`, or open the live site above.
+3. To run the tests, open `tests.html` in a browser.
+
+## Project Structure
+
+```
+index.html      main page
+Styles/         base.css, layout.css, components.css
+scripts/        main.js
+assets/         book covers and images
+seed.json       10 starting books
+tests.html      browser tests
+```
+
+## Planned Improvements
+
+- Inline error messages and regex validation rules on the Add Book form.
+- Highlight search matches with `<mark>`.
+- Skip-to-content link and `aria-live` messages for the reading goal.
+- Close the navigation drawer with the `Escape` key.
+- Split `main.js` into modules (storage, validation, search, UI).

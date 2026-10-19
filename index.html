@@ -194,7 +194,7 @@
                         <strong class="stat-value" id="stat-books-read">0</strong>
                     </div>
                     <div class="card stat-card">
-                        <span class="stat-lable">Added this week</span>
+                        <span class="stat-label">Added this week</span>
                         <strong class="stat-value" id="stat-added-week">1</strong>
                     </div>
                 </div>
@@ -203,7 +203,7 @@
                 <div class="card favorite-book-card" id="favorite-book-card">
                     <div class="fvaorite-card-content">
                         <div class="favorite-cover-preview">
-                            <img src="./assests/empty-book.svg" alt="Favorite Book Cover" class="favorite-cover-img"
+                            <img src="./assets/computer-systems.jpg" alt="Favorite Book Cover" class="favorite-cover-img"
                                 id="favorite-cover-img">
                         </div>
                         <div class="favorite-card-details">
@@ -239,7 +239,7 @@
                         <button type="button" class="btn btn-secondary btn-sm" id="btn-export-json">Export JSON</button>
                         <button type="button" class="btn btn-secondary btn-sm" id="btn-import-trigger">Import
                             JSON</button>
-                            <input type="file" id="import-json-file" accept=".json" style="display:none;">
+                            <input type="file" id="import-file-input" accept=".json" style="display:none;">
                     </div>
                 </div>
 
@@ -292,7 +292,7 @@
                 <!-- Desktop Books Table Card -->
 
                 <div class="card table-card desktop-only-table">
-                    <div class="table-card-header" id="table-count-lable">1 book in collection</div>
+                    <div class="table-card-header" id="table-count-label">1 book in collection</div>
                     <div class="table-responsive">
                         <table class="catalog-table">
                             <thead>
@@ -326,7 +326,7 @@
 
                 <div class="card form-card">
                     <form id="book-form">
-                        <input type="hidden" id="editind-book-id" value="">
+                        <input type="hidden" id="editing-book-id" value="">
 
                         <div class="form-grid">
                             <div class="form-field">
@@ -362,7 +362,7 @@
                             <div class="form-field">
                                 <Label for="form-status" class="form-label">Reading Status</Label>
                                 <select id="form-status" class="form-select">
-                                    <option value="To read" selected>To Read</option>
+                                    <option value="To Read" selected>To Read</option>
                                     <option value="Reading">Reading</option>
                                     <option value="Read">Read</option>
                                 </select>
@@ -396,7 +396,7 @@
                         </div>
 
                         <div class="form-actions" style="margin-top: 24px; display: flex; gap: 12px;">
-                            <button type="submit" class="btn btn-primmary" id="btn-save-book">Save Book</button>
+                            <button type="submit" class="btn btn-primary" id="btn-save-book">Save Book</button>
                             <button type="button" class="btn btn-secondary" id="btn-cancel-form">Cancel</button>
                         </div>
                     </form>

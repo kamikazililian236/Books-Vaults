@@ -23,7 +23,7 @@
     "status": "Read",
     "isFavorite": true,
     "cover": "./assets/computer-systems.jpg",
-    "coverImage": "./assets/computer-systems.jgp",
+    "coverImage": "./assets/computer-systems.jpg",
     "synopsis": "A programmer's perspective on computer architecture and memory hierarchy."
 
   },
@@ -39,6 +39,7 @@
     "cover": "./assets/a-small-fortune.jpg",
     "coverImage": "./assets/a-small-fortune.jpg",
     "synopsis": "A man struggles to balance family obligations and personal choices after receiving money."
+    
 
   },
   {

@@ -1,48 +1,183 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   const defaultBooks = [
-    {
-      id: 1,
-      title: "The Midnigt Library",
-      author: "Matt Haig",
-      pages: 288,
-      tag: "Fiction",
-      date: "2026-10-08",
-      status: "Reading",
-      isFavorite: false,
-      cover: "./assets/empty-book.svg",
-      coverImage: "./assets/empty-book.svg",
-      synopsis: "Between life and death there is alibrary where shelves goon forever, Nora seed is given the chance to undo her regrets and explore the alternate lives she could have lived."
-    },
-    {
-      id: 2,
-      title: "Computer Systems",
-      author: "Randal Bryant & David O'Hallaron",
-      pages: 1104,
-      tag: "Systems",
-      date: "2026-10-10",
-      cover: "./assets/empty-book.svg",
-      coverImage: "./assets/empty-book.svg",
-      synopsis: "A programmer's perspective on computer architeture, memory hierarcghy, amchine level-code, and concurrent systems."
-    }
-  ];
+  {
+    "id": 1,
+    "title": "The Midnight Library",
+    "author": "Matt Haig",
+    "pages": 288,
+    "tag": "Fiction",
+    "date": "2026-10-08",
+    "status": "Reading",
+    "isFavorite": false,
+    "cover": "./assets/the-midnight-library.jpg",
+    "coverImage": "./assets/the-midnight-library.jpg",
+    "synopsis": "Between life and death there is a library where shelves go on forever."
+  
+  },
+  {
+    "id": 2,
+    "title": "Computer Systems",
+    "author": "Randal Bryant & David O'Hallaron",
+    "pages": 1104,
+    "tag": "True Events",
+    "date": "2026-10-10",
+    "status": "Read",
+    "isFavorite": true,
+    "cover": "./assets/computer-systems.jpg",
+    "coverImage": "./assets/computer-systems.jpg",
+    "synopsis": "A programmer's perspective on computer architecture and memory hierarchy."
+
+  },
+  {
+    "id": 3,
+    "title": "A Small Fortune",
+    "author": "Roise Dastgir",
+    "pages": 384,
+    "tag": "Drama",
+    "date": "2026-07-22",
+    "status": "Reading",
+    "isFavorite": true,
+    "cover": "./assets/a-small-fortune.jpg",
+    "coverImage": "./assets/a-small-fortune.jpg",
+    "synopsis": "A man struggles to balance family obligations and personal choices after receiving money."
+    
+
+  },
+  {
+    "id": 4,
+    "title": "Gravity is the thing",
+    "author": "Jaclyn Moriarty",
+    "pages": 416,
+    "tag": "Mystery",
+    "date": "2026-06-11",
+    "status": "To Read",
+    "isFavorite": false,
+    "cover": "./assets/gravity-is-the-thing.jpg",
+    "coverImage": "./assets/gravity-is-the-thing.jpg",
+    "synopsis": " A woman searches for answers about her missing brother and a mysterious book."
+    
+  },
+  {
+    "id": 5,
+    "title": "Hurricane Summer",
+    "author": "Asha Bromfield",
+    "pages": 384,
+    "tag": "Drama",
+    "date": "2026-09-20",
+    "status": "To Read",
+    "isFavorite": true,
+    "cover": "./assets/hurricane-summer.jpg",
+    "coverImage": "./assets/hurricane-summer.jpg",
+    "synopsis": "A teenage girl discovers family secrets while visiting Jamaica."
+
+  },
+  {
+    "id": 6,
+    "title": "The Book Thief",
+    "author": "Markus Zusak",
+    "pages": 592,
+    "tag": "Drama",
+    "date": "2026-10-03",
+    "status": "Reading",
+    "isFavorite": true,
+    "cover": "./assets/the-book-thief.jpeg",
+    "coverImage": "./assets/the-book-thief.jpeg",
+    "synopsis": "A young girl finds comfort in books during World War II."
+
+  },
+  {
+    "id": 7,
+    "title": "The Water Cure",
+    "author": " Sophie Mackintosh",
+    "pages": 288,
+    "tag": "Fiction",
+    "date": "2026-08-04",
+    "status": "Read",
+    "isFavorite": false,
+    "cover": "./assets/the-water-cure.jpg",
+    "coverImage": "./assets/the-water-cure.jpg",
+    "synopsis": "Three isolated sisters question their upbringing when strangers arrive."
+
+  },
+  {
+    "id": 8,
+    "title": "The Truth Unravels",
+    "author": "John Premade",
+    "pages": 456,
+    "tag": "Mystery",
+    "date": "2026-09-21",
+    "status": "To Read",
+    "isFavorite": true,
+    "cover": "./assets/the-truth-unravels.jpeg",
+    "coverImage": "./assets/the-truth-unravels.jpeg",
+    "synopsis": "A man living in London where he finds out the truth about what he has been searcing for his entire life."
+
+  },
+  {
+    "id": 9,
+    "title": "The Island",
+    "author": "Antigone Kefala",
+    "pages": 316,
+    "tag": "fiction",
+    "date": "2026-10-13",
+    "status": "Read",
+    "isFavorite": true,
+    "cover": "./assets/the-island.jpg",
+    "coverImage": "./assets/the-island.jpg",
+    "synopsis": "Life exceptations."
+    
+  },
+  {
+    "id": 10,
+    "title": "Verity",
+    "author": "Colleen Hoover",
+    "pages": 336,
+    "tag": "Drama",
+    "date": "2026-08-28",
+    "status": "Reading",
+    "isFavorite": false,
+    "cover": "./assets/verity.jpg",
+    "coverImage": "./assets/verity.jpg",
+    "synopsis": "Lowen, a struggling writer, discovers a disturbing manuscript filled with dark secrets while working for a famous author, Verity Crawford."
+
+  }
+];
 
 
-  let books = JSON.parse(localStorage.getItem('lilian_vault_books')) || defaultBooks;
-  // Sanitize any deprecated image filenames in existing localStorage
-  books.forEach(b => {
-    if (b.cover && (b.cover.includes('midnight-library') || b.cover.includes('computer-sytems'))) {
-      b.cover = './assets/empty-book.svg';
-    }
-    if (b.coverImage && (b.coverImage.includes('midnight-library') || b.coverImage.includes('computer-systems'))) {
-      b.coverImage = './assets/empty-book.svg';
-    }
-  });
+  let books = defaultBooks;
+  try {
+    const saved = JSON.parse(localStorage.getItem('lilian_vault_books'));
+    if(Array.isArray(saved) && saved.length > 0) books = saved;
+  } catch (e) {
+
+  }
+  if
+  (!localStorage.getItem('lilian_vault_books'))
+  {
+    fetch('./seed.json')
+    .then(res => res.json())
+    .then(data => {
+      if (Array.isArray(data) && data.length > 0) {
+
+        books = data;
+        localStorage.setItem('lilian_vault_books',
+          JSON.stringify(books));
+          renderCatalog();
+          renderDashboard();
+          updateHomeHeroStats();
+      }
+    })
+
+    .catch(err => console.log('Using default seed'));
+  }
 
   let readerGoal = parseInt(localStorage.getItem('lilian-reader-goal'), 10) || 25;
   let readerMotto = localStorage.getItem('lilian-reader-motto') || 'Aquiet space for every book.';
 
   let currentView = 'home';
+  const defaultViewSetting = 'home';
+
   let expandedBooksIds = new Set();
 
   const navItems = document.querySelectorAll('.sidebar .nav-item');
@@ -63,14 +198,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const statAddedWeek = document.getElementById('stat-added-week');
 
   const catalogSearchInput = document.getElementById('catalog-search-input');
-  const catalogRegexCheck = document.getElementById('catalog-regx-check');
-  const CatalogCaseCheck = document.getElementById('catalog-case-check');
+  const catalogRegexCheck = document.getElementById('catalog-regex-check');
+  const catalogCaseCheck = document.getElementById('catalog-case-check');
   const catalogSort = document.getElementById('catalog-sort');
   const catalogFilterTag = document.getElementById('catalog-filter-tag');
   const catalogFilterStatus = document.getElementById('catalog-filter-status');
   const tableCountLabel = document.getElementById('table-count-label');
-  const CatalogTableBody = document.getElementById('catalog-table-body');
-  const mobileBooksConatiner = document.getElementById('mobile-books-container');
+  const catalogTableBody = document.getElementById('catalog-table-body');
+  const mobileBooksContainer = document.getElementById('mobile-books-container');
 
   const bookForm = document.getElementById('book-form');
   const formViewTitle = document.getElementById('form-view-title');
@@ -81,10 +216,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const formTag = document.getElementById('form-tag');
   const formDate = document.getElementById('form-date');
   const formStatus = document.getElementById('form-status');
-  const formSynopsis = document.getElementById('formm-synopsis');
+  const formSynopsis = document.getElementById('form-synopsis');
   const btnCancelForm = document.getElementById('btn-cancel-form');
   const formCoverFile = document.getElementById('form-cover-file');
-  const CoverPreviewRow = document.getElementById('cover-preview-row');
+  const coverPreviewRow = document.getElementById('cover-preview-row');
   const coverPreviewImg = document.getElementById('cover-preview-img');
   const btnRemoverCover = document.getElementById('btn-remove-cover');
   const formIsFavorite = document.getElementById('form-is-favorite');
@@ -97,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const btnExportJson = document.getElementById('btn-export-json');
   const btnImportTrigger = document.getElementById('btn-import-trigger');
-  const importFileInput = document.getElementById('import-json-file');
+  const importFileInput = document.getElementById('import-file-input');
   const toast = document.getElementById('toast');
 
   if (formDate) {
@@ -105,14 +240,14 @@ document.addEventListener('DOMContentLoaded', () => {
     formDate.value = today;
   }
 
-  if (formcoverFile) {
+  if (formCoverFile) {
     formCoverFile.addEventListener('change', (e) => {
       const file = e.target.files[0];
       if (file) {
         const reader = new FileReader();
         reader.onload = (loadEvent) => {
           newlyPickedCoverFile = loadEvent.target.result;
-          currentUploadedCover = newlyPickedCoverFiles;
+          currentUploadedCover = newlyPickedCoverFile;
           if (coverPreviewImg) coverPreviewImg.src = newlyPickedCoverFile;
           if (coverPreviewRow) coverPreviewRow.style.display = 'flex';
         };
@@ -121,12 +256,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  if (btnRemoveCover) {
-    btnRemoveCover.addEventListener('click', () => {
+  if (btnRemoverCover) {
+    btnRemoverCover.addEventListener('click', () => {
       newlyPickedCoverFile = '';
       currentUploadedCover = '';
       if (formCoverFile) formCoverFile.value = '';
-      if (formCoverUrl) formCoverUrl.value = '';
       if (coverPreviewImg) coverPreviewImg.src = '';
       if (coverPreviewRow) coverPreviewRow.style.display = 'none';
     });
@@ -236,7 +370,7 @@ function switchView(viewName, pushHistory = true) {
 }
 
 window.addEventListener('popstate', (e) => {
-  const target = (e.statet && e.state.view) || window.location.hash.replace('#', '') || 'home';
+  const target = (e.state && e.state.view) || window.location.hash.replace('#', '') || 'home';
   switchView(target, false);
 });
 
@@ -289,7 +423,7 @@ drawerItems.forEach(btn => {
 function updateHomeHeroStats() {
   const spotlightTitle = document.getElementById('home-spotlight-title');
   const spotlightAuthor = document.getElementById('home-spotlight-author');
-  const sppotlightSynopsis = document.getElementById('home-spotlight-synopsis') || document.getElementById('home-spotlight-quote');
+  const spotlightSynopsis = document.getElementById('home-spotlight-synopsis') || document.getElementById('home-spotlight-quote');
   const spotlightImg = document.getElementById('home-spotlight-img');
   const spotlightTag = document.getElementById('home-spotlight-tag');
   const spotlightViewBtn = document.getElementById('home-spotlight-view-btn');
@@ -337,8 +471,8 @@ function updateHomeHeroStats() {
 const homeCtaLibrary = document.getElementById('home-cta-library');
 if (homeCtaLibrary) homeCtaLibrary.addEventListener('click', () => switchView('catalog'));
 
-const homeCtaDashboard = document.getElementById('home-spotlight-view-btn');
-if (homeCtaDahboard) homeCtaDashboard.addEventListener('click', () => switchView('dashboard'));
+const homeCtaDashboard = document.getElementById('home-cta-dashboard');
+if (homeCtaDashboard) homeCtaDashboard.addEventListener('click', () => switchView('dashboard'));
 
 const homeSpotlightViewBtn = document.getElementById('home-spotlight-view-btn');
 if (homeSpotlightViewBtn) homeSpotlightViewBtn.addEventListener('click', () => switchView('catalog'));
@@ -351,7 +485,7 @@ goAddBtns.forEach(btn => {
 });
 
 if (btnCancelForm) {
-  btnCnacelForm.addEventListener('click', () => {
+  btnCancelForm.addEventListener('click', () => {
     resetBookForm();
     switchView('catalog');
   });
@@ -371,8 +505,8 @@ function showToast(message) {
 
 function persistData() {
   localStorage.setItem('lilian_vault_books', JSON.stringify(books));
-  localStorage.setItem('lilian_reader_goal', readerGoal);
-  localStorage.setItem('lilian_reader-motto', readerMotto);
+  localStorage.setItem('lilian-reader-goal', readerGoal);
+  localStorage.setItem('lilian-reader-motto', readerMotto);
   updateHomeHeroStats();
   renderDashboard();
   renderCatalog();
@@ -403,7 +537,7 @@ function renderDashboard() {
   if (statCurrentRead) statCurrentRead.textContent = currentBook ? currentBook.title : 'None';
 
   const completedReads = books.filter(b => b.status === 'Read').length;
-  if (StatBooksRead) statBooksRead.textContent = completedReads.toString();
+  if (statBooksRead) statBooksRead.textContent = completedReads.toString();
 
   const totalPages = books.reduce((acc, b) => acc + (parseInt(b.pages, 10) || 0), 0);
   if (statTotalPages) statTotalPages.textContent = totalPages.toLocaleString();
@@ -422,8 +556,8 @@ function renderDashboard() {
   const favTitle = document.getElementById('favorite-book-title');
   const favAuthor = document.getElementById('favorite-book-author');
   const favSynopsis = document.getElementById('favorite-book-synopsis');
-  const faveBadge = document.getElementById('favorite-book-badge');
-  const faveCoverImg = document.getElementBy('favorite-cover-img');
+  const favBadge = document.getElementById('favorite-book-badge');
+  const favCoverImg = document.getElementById('favorite-cover-img');
   const favViewBtn = document.getElementById('favorite-view-library-btn');
 
   if (!favBookCard) return;
@@ -443,13 +577,13 @@ function renderDashboard() {
     if (favBadge) {
       favBadge.textContent = favBook.status || 'To Read';
       const statusSlug = (favBook.status || 'toread').toLowerCase().replace(/\s+/g, '');
-      favBadge.className = `btn-toggle-status status-pill status-${stausSlug}`;
+      favBadge.className = `btn-toggle-status status-pill status-${statusSlug}`;
       favBadge.onclick = () => toggleBookStatus(favBook.id);
     }
-    if (faveCoverImg) {
-      faveCoverImg.src = favBook.coverImage || favBook.cover || './assets/empty-book.svg';
-      faveCoverImg.alt = `${favBook.title} Cover`;
-      faveCoverImg.style.display = 'block';
+    if (favCoverImg) {
+      favCoverImg.src = favBook.coverImage || favBook.cover || './assets/empty-book.svg';
+      favCoverImg.alt = `${favBook.title} Cover`;
+      favCoverImg.style.display = 'block';
     }
 
     if (favViewBtn) {
@@ -460,13 +594,13 @@ function renderDashboard() {
     if (favHeaderBadge) favHeaderBadge.textContent = 'FAVORITE BOOK';
     if (favSubbadge) favSubbadge.textContent = 'Personal Vault';
     if (favTitle) favTitle.textContent = 'No Favorite Book Selected;'
-    if (FavAuthor) favAuthor.textContent = 'Mark your favorite in My Library';
+    if (favAuthor) favAuthor.textContent = 'Mark your favorite in My Library';
     const emptyNote = 'You have not marked any book as your favorite yet. Click the heart or edit a book in My Library to showcase it here.';
     if (favSynopsis) favSynopsis.textContent = emptyNote;
     if (favBadge) {
       favBadge.textContent = 'None';
       favBadge.className = 'status-pill';
-      favBagde.onclick = 'null';
+      favBadge.onclick = 'null';
     }
     if (favCoverImg) {
       favCoverImg.src = './assets/empty-book.svg';
@@ -483,12 +617,12 @@ function renderDashboard() {
 function populateCatalogTags() {
   if (!catalogFilterTag) return;
   const currentSelected = catalogFilterTag.value || 'All';
-  const tagSet = new set();
+  const tagSet = new Set();
   books.forEach(b => {
     if (b.tag && b.tag.trim()) tagSet.add(b.tag.trim());
   });
   const tags = Array.from(tagSet).sort();
-  let optionsHtml = `<option value="Alll">All Tags</option>`;
+  let optionsHtml = `<option value="All">All Tags</option>`;
   tags.forEach(t => {
     optionsHtml += `<option value="${escapeHtml(t)}" ${t.toLowerCase() === currentSelected.toLowerCase() ? 'selected' : ''}>${escapeHtml(t)}</option>`;
   });
@@ -507,7 +641,7 @@ function renderCatalog() {
 
   const sortValue = catalogSort ? catalogSort.value : `title-asc`;
   const tagFilter = catalogFilterTag ? catalogFilterTag.value : 'All';
-  const statusFilter = catalogFilterStatus ? catalogFilterStaus.value : 'All';
+  const statusFilter = catalogFilterStatus ? catalogFilterStatus.value : 'All';
 
   let filtered = books.filter(book => {
     const textMatch = matchesSearch(book.title, query, useRegex, isCase) ||
@@ -522,7 +656,7 @@ function renderCatalog() {
   filtered.sort((a, b) => {
     if (sortValue === 'title-asc') return a.title.localeCompare(b.title);
     if (sortValue === 'title-desc') return b.title.localeCompare(a.title);
-    if (sortvalue === 'pages-desc') return new Date(b.date || 0) - new Date(a.date || 0);
+    if (sortValue === 'pages-desc') return new Date(b.date || 0) - new Date(a.date || 0);
     return 0;
   });
 
@@ -553,7 +687,7 @@ function renderCatalog() {
         </td>
         <td class="actions-cell">
         <div class="actions-group">
-        <buttonn type="button" class="btn-action btn-view" data-id="${book.id}">${isExpanded ? 'Hide' : 'View'}</button>
+        <button type="button" class="btn-action btn-view" data-id="${book.id}">${isExpanded ? 'Hide' : 'View'}</button>
         <button type ="button" class="btn-action btn-edit" data-id="${book.id}">Edit</button>
         <button type="button" class="btn-action btn-delete" data-id="${book.id}">Delete</button>
         </div>
@@ -593,9 +727,9 @@ function renderCatalog() {
 
   if (mobileBooksContainer) {
     if (filtered.length === 0) {
-      mobileBooksConatiner.innerHTML = `<div style="text-align: center; padding: 24px; color: #6B7280; background: #FFF; border-radius: 8px;">No books found.</div`;
+      mobileBooksContainer.innerHTML = `<div style="text-align: center; padding: 24px; color: #6B7280; background: #FFF; border-radius: 8px;">No books found.</div`;
     } else {
-      mobileBookContainer.innerHTML = filtered.map(book => {
+      mobileBooksContainer.innerHTML = filtered.map(book => {
         const isExpanded = expandedBooksIds.has(book.id);
         return `
         <div class="mobile-book-card" data-book-id="${book.id}">
@@ -604,7 +738,7 @@ function renderCatalog() {
         <div class="mobile-book-card-title">${escapeHtml(book.title)}</div>
         <div class="mobile-book-card-author">by ${escapeHtml(book.author)}</div>
         </div>
-        <button type="button" class="status-pill btn-toggle-status" data-id="${book.id}">${escapeHtmml(book.status)}</button>
+        <button type="button" class="status-pill btn-toggle-status" data-id="${book.id}">${escapeHtml(book.status)}</button>
         </div>
         <div style="font-size: 0.85rem; color: #4B5563;">${book.pages} pages . ${escapeHtml(book.status)}</button>
         ${isExpanded ? `
@@ -658,7 +792,15 @@ function renderCatalog() {
         startEditBook(id);
       });
     });
+
+    document.querySelectorAll('.btn-delete').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const id = parseInt(e.currentTarget.dataset.id, 10);
+        deleteBook(id);
+      });
+    });
   }
+  
 
   function toggleBookStatus(bookId) {
     const book = books.find(b => b.id === bookId);
@@ -666,7 +808,7 @@ function renderCatalog() {
     const statusCycle = ['To Read', 'Reading', 'Read'];
     const currentIndex = statusCycle.indexOf(book.status);
     const nextStatus = statusCycle[(currentIndex + 1) % statusCycle.length];
-    books.status = nextStatus;
+    book.status = nextStatus;
     persistData();
     renderCatalog();
     renderDashboard();
@@ -681,7 +823,7 @@ function renderCatalog() {
     if (!book) return;
     if ( confirm(`Are you sure want to delete "${book.title}"?`)) {
       books = books.filter(b => b.id !== bookId);
-    expandedBookIds.delete(bookId);
+    expandedBooksIds.delete(bookId);
     persistData();
     renderCatalog();
     renderDashboard();
@@ -726,7 +868,7 @@ function startEditBook(bookId) {
 
 function resetBookForm() {
   if (formViewTitle) formViewTitle.textContent = `Add Book`;
-  if (edititngBookIdInput) editingBookIdInput.value = '';
+  if (editingBookIdInput) editingBookIdInput.value = '';
   if (bookForm) bookForm.reset();
   if (formDate) {
     formDate.value = new Date().toISOString().split('T')[0];
@@ -750,10 +892,10 @@ function resetBookForm() {
       const author = formAuthor.value.trim();
       const pages = parseInt(formPages.value, 10) || 0;
       const tag = formTag.value.trim() || 'General';
-      const date = FormDate.value || new Date().toISOString().split
+      const date = formDate.value || new Date().toISOString().split('T')[0];
       const status =formStatus.value;
       const synopsis = formSynopsis ? formSynopsis.value.trim() : '';
-      const editId = edititngBookIdInput.value ? parseInt(editingBookIdInput.value, 10): null;
+      const editId = editingBookIdInput.value ? parseInt(editingBookIdInput.value, 10): null;
       if (!title || !author) {
         alert('Please fill out the title and aouther.');
         return;
@@ -765,7 +907,7 @@ function resetBookForm() {
           let finalCover = './assets/empty-book.svg';
           if (newlyPickedCoverFile) {
             finalCover = newlyPickedCoverFile;
-          } else if (currentUpLoadedCover) {
+          } else if (currentUploadedCover) {
             finalCover = currentUploadedCover;
           } else if (books[index]) {
              finalCover = books[index].coverImage || books[index].cover || './assets/empty-book.svg';
@@ -791,7 +933,7 @@ function resetBookForm() {
         if (newlyPickedCoverFile) {
           finalCover = newlyPickedCoverFile;
         } else if (currentUploadedCover) {
-          finalcover = currentUploadedCover;
+          finalCover = currentUploadedCover;
         }
 
         const newBook ={
@@ -804,7 +946,7 @@ function resetBookForm() {
           status,
           synopsis,
           cover: finalCover,
-          CoverImage: finalCover,
+          coverImage: finalCover,
           isFavorite: formIsFavorite ? formIsFavorite.checked : false
         };
         books.unshift(newBook);
@@ -824,7 +966,7 @@ function resetBookForm() {
     settingsForm.addEventListener('submit', (e) => {
       e.preventDefault();
       readerGoal = prefReaderGoal ? parseInt(prefReaderGoal.value, 10) || 25 : 25;
-      readerMotto = prefReaderMotto ? prefReadeMotto.value.trim() : 'A quiet space for every book.';
+      readerMotto = prefReaderMotto ? prefReaderMotto.value.trim() : 'A quiet space for every book.';
       persistData();
       showToast('Reading target saved successfully.');
       });
@@ -838,7 +980,7 @@ function resetBookForm() {
         const dataStr = "data:text/json;charset=Utf-8," + encodeURIComponent(JSON.stringify(books, null, 2));
         const downloadAnchor = document.createElement('a');
         downloadAnchor.setAttribute("href", dataStr);
-        downloadAnchor.setAttribute("dowload", "vault_books_export.json");
+        downloadAnchor.setAttribute("download", "vault_books_export.json");
         document.body.appendChild(downloadAnchor);
         downloadAnchor.click();
         downloadAnchor.remove();
@@ -848,8 +990,8 @@ function resetBookForm() {
   
   }
 
-      if (btnimportTrigger && importFileInput) {
-        btnImportTrigger.addEventListener(' click', () => {
+      if (btnImportTrigger && importFileInput) {
+        btnImportTrigger.addEventListener('click', () => {
           importFileInput.click();
         });
 
@@ -887,14 +1029,14 @@ function resetBookForm() {
         renderDashboard();
         renderCatalog();
 
-        const initialHash = window.location.has.replace('#', '');
+        const initialHash = (window.location.hash || '').replace('#', '');
         if (initialHash && ['home', 'dashboard', 'catalog', 'add-book', 'settings', 'about'].includes(initialHash)) {
           switchView(initialHash, false);
           history.replaceState({ view: initialHash }, '', '#' + initialHash);
-        } else if (defaultViewSetting && defaultViewSetting !== 'home') {
+
           switchView(defaultViewSetting,false);
           history.replaceState({ view: defaultViewSetting }, '', '#' + defaultViewSetting);
-        } else {
+         } else {
           history.replaceState({ view: 'home' }, '', window.location.pathname + window.location.search);
         } 
       
